@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block title %}<title>Drone people</title>{% endblock %}
+</head>
+<body>
+  <h1>Person list</h1>
+  {% if people %}
+  <ul>
+    {% for person in people %}
+      <li>
+        {{ person.firstName }} {{person.lastName}} {{ person.phoneNumber }} {{ person.email }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no people.</p>
+  {% endif %}
+</body>
+</html>
