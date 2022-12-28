@@ -9,7 +9,7 @@
   <ul>
     {% for person in people %}
       <li>
-        {{ person.firstName }} {{person.lastName}} {{ person.phoneNumber }} {{ person.email }}
+        {{ person.name }} {{person.data.phoneNumber}} {{ person.data.email }} last seen: {{ person.time }}
       </li>
     {% endfor %}
   </ul>

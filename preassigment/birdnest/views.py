@@ -3,6 +3,9 @@ from django.http import HttpResponse
 import requests
 import urllib3
 import xmltodict
+from birdnest.models import Person
+import datetime
+
 def getxml():
     url = 'https://assignments.reaktor.com/birdnest/drones'
     http = urllib3.PoolManager()
@@ -16,7 +19,6 @@ def index(request):
     drones = [i for i in xmldict['report']['capture']['drone']]
 
     drones_inside_zone = []
-    people = []
 
     for drone in drones:
         if pow(float(drone['positionX']) - 250000, 2) + pow(float(drone['positionY']) - 250000, 2) < pow(100000, 2):
@@ -24,7 +26,10 @@ def index(request):
 
     for drone in drones_inside_zone:
         response = requests.get('https://assignments.reaktor.com/birdnest/pilots/' + drone['serialNumber'])
-        people.append(response.json())
+        data = response.json()
+        Person.objects.update_or_create(name=(data['firstName'] + ' ' + data['lastName']), defaults=dict(data=data, time=datetime.datetime.now()))
+
+    people = Person.objects.all()
 
     return render(request, 'index.html', {'people': people})
 
