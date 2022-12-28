@@ -13,7 +13,7 @@
     <ul>
       {% for person in people %}
         <li>
-          {{ person.name }} {{person.data.phoneNumber}} {{ person.data.email }} last seen: {{ person.time }} closest position: {{ person.closest_position }}
+          {{ person.name }} {{person.data.phoneNumber}} {{ person.data.email }} last seen: {{ person.time }} closest distance: {{ person.closest_distance }}
         </li>
       {% endfor %}
     </ul>

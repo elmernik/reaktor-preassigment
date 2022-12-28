@@ -5,6 +5,7 @@ import urllib3
 import xmltodict
 from birdnest.models import Person
 import datetime
+import math
 
 def getxml():
     url = 'https://assignments.reaktor.com/birdnest/drones'
@@ -32,10 +33,10 @@ def index(request):
         if Person.objects.filter(name=(data['firstName'] + ' ' + data['lastName'])):
             person = Person.objects.get(name=(data['firstName'] + ' ' + data['lastName']))
             closest_position = position if person.closest_distance < distance else person.closest_position
-            closest_distance = distance if person.closest_distance < distance else person.closest_distance
+            closest_distance = round(math.sqrt(distance)/1000, 2) if person.closest_distance > round(math.sqrt(distance)/1000, 2) else person.closest_distance
         else:
             closest_position = position
-            closest_distance = distance
+            closest_distance = round(math.sqrt(distance)/1000, 2)
 
         Person.objects.update_or_create(name=(data['firstName'] + ' ' + data['lastName']), defaults=dict(data=data, time=datetime.datetime.now(tz=datetime.timezone.utc), closest_position=closest_position, closest_distance=closest_distance))
 
