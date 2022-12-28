@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
   {% block title %}<title>Drone people</title>{% endblock %}
+  <!-- Load the HTMX JS: -->
+  <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
+  <!-- The magic happens here in one line: -->
 </head>
 <body>
-  <h1>Person list</h1>
-  {% if people %}
-  <ul>
-    {% for person in people %}
-      <li>
-        {{ person.name }} {{person.data.phoneNumber}} {{ person.data.email }} last seen: {{ person.time }} closest position: {{ person.closest_position }}
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no people.</p>
-  {% endif %}
+  <div hx-get='' hx-trigger="every 1s">
+    <h1>Person list</h1>
+    {% if people %}
+    <ul>
+      {% for person in people %}
+        <li>
+          {{ person.name }} {{person.data.phoneNumber}} {{ person.data.email }} last seen: {{ person.time }} closest position: {{ person.closest_position }}
+        </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no people.</p>
+    {% endif %}
+  </div>
 </body>
 </html>
