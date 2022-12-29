@@ -5,20 +5,29 @@
   <!-- Load the HTMX JS: -->
   <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
   {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'birdnest.css' %}">
+  <link rel="stylesheet"  type="text/css" href="{% static 'css/birdnest.css' %}">
 </head>
 <body>
   <!-- Update drone/people info every 1s -->
    <div hx-get='' hx-trigger="every 1s">
     <h1>People violating the NDZ</h1>
     {% if people %}
-    <ul>
-      {% for person in people %}
-        <li>
-          {{ person.name }} <div class="contactInfo"> {{person.data.phoneNumber}} {{ person.data.email }} </div> last seen: {{ person.time|time }} closest distance: {{ person.closest_distance }}
-        </li>
-      {% endfor %}
-    </ul>
+    <div class="centerList">
+      <span>Name</span>
+      <span>Contact Information</span>
+      <span>Last Seen</span>
+      <span>Closest Distance </span>
+      <ul>
+        {% for person in people %}
+          <li>
+            <div class="personName">{{ person.name }}</div>
+            <div class="contactInfo"> Phone: {{person.data.phoneNumber}} <br> Email: {{ person.data.email }} </div> 
+            <div class="lastSeen">{{ person.time|time }} </div> 
+            <div class="closestDistance"> {{ person.closest_distance }} m</div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
     {% else %}
       <p>There are no people.</p>
     {% endif %}
