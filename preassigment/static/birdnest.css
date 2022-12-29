@@ -1,0 +1,18 @@
+ul {
+    justify-content: center;
+    background-color: aqua;
+    color: aqua;
+}
+
+li{
+    background-color: brown;
+    color:  blueviolet;
+}
+
+.contactInfo{
+    color:rgb(184, 34, 34);
+}
+
+body {
+    background-color: violet;
+}
