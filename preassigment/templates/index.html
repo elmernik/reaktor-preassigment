@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- Update drone/people info every 1s -->
-   <div hx-get='' hx-trigger="every 1s">
+   <div hx-get='' hx-trigger="every 100s">
     <h1>People violating the NDZ</h1>
     {% if people %}
     <div class="centerList">
@@ -21,7 +21,7 @@
         {% for person in people %}
           <li>
             <div class="personName">{{ person.name }}</div>
-            <div class="contactInfo"> Phone: {{person.data.phoneNumber}} <br> Email: {{ person.data.email }} </div> 
+            <div class="contactInfo"> Phone: {{person.phone_number}} <br> Email: {{ person.email }} </div> 
             <div class="lastSeen">{{ person.time|time }} </div> 
             <div class="closestDistance"> {{ person.closest_distance }} m</div>
           </li>
