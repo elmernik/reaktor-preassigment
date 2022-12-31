@@ -16,15 +16,14 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ky(cwoe2e&f*1g)&o=y#p-tnn^=55os4z^%99)!fw^!6-q*)ws'
+SECRET_KEY = 'p_z9shys$fc-0@vky**ppek6!&fk-#(^luzvzhs12c9&e6f$j%'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -131,3 +130,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
