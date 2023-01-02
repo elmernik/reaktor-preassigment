@@ -1,38 +1,47 @@
 /* Style the list */
 ul {
     list-style-type: none; /* Remove the bullet points */
-    margin: 0; /* Remove the default margin */
+    margin:auto; /* Remove the default margin */
     padding: 0; /* Remove the default padding */
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
   
-  /* Style the list items */
-  li {
+/* Style the list items */
+li {
     display: flex; /* Use flex layout for the items */
     align-items: center; /* Align the items vertically */
     margin: 0.5em; /* Add some spacing between the items */
     padding: 0.5em; /* Add some padding to the items */
-  }
-  
-  /* Style the boxes within the list items */
-  li .contactInfo, .personName, .lastSeen, .closestDistance {
+    justify-content: center;
+}
+
+/* Style the boxes within the list items */
+li .contactInfo, .personName, .lastSeen, .closestDistance {
     display: flex; /* Use flex layout for the boxes */
     align-items: center; /* Align the content of the boxes vertically */
     justify-content: center;
     text-align: justify; /* Center the content of the boxes horizontally */
-    width: 20vw; /* Set the width of the boxes */
+    width: 16vw; /* Set the width of the boxes */
     height: 80px; /* Set the height of the boxes */
     margin-right: 0.5em; /* Add some spacing between the boxes and the other content */
     border-radius: 4px; /* Round the corners of the boxes */
     font-size: 1.5vw;
-  }
+}
 
 .centerList {
-    max-width: 960px;
-    margin: auto;
+    width: 100%;
+}
+
+div {
+    width:100%;
 }
 
 body{
     text-align: center;
+    width:100%;
 }
 
 li .contactInfo, .closestDistance {
@@ -56,9 +65,5 @@ span {
 }
 
 body {
-    background-color:coral;
-}
-
-h1 {
-    font-size: max(2vw, 2em);
+    background-color:cornsilk;
 }
